@@ -6,4 +6,4 @@ The `config_generator.py` was written with use in PlatformIO projects in mind. R
 
 To call in PlatformIO as part of an environment and select the config profile to apply from `config.ini` just add this line to the target environment in PlatformIO:
 
-	extra_scripts = config_generator.py -p <target_profile> -cf <target_config.ini> -o <target_header.h>
+	extra_scripts = pre:config_generator.py
