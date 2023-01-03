@@ -1,6 +1,18 @@
+#!/usr/bin/python3
 import configparser
 import argparse
 
+
+def print_title():
+    print((
+    '   _____             __ _          _____           \n' +  
+    '  / ____|           / _(_)        / ____|          \n' + 
+    ' | |     ___  _ __ | |_ _  __ _  | |  __  ___ _ __ \n' + 
+    " | |    / _ \| '_ \|  _| |/ _` | | | |_ |/ _ \ '_ \ \n" + 
+    " | |___| (_) | | | | | | | (_| | | |__| |  __/ | | | \n" + 
+    "  \_____\___/|_| |_|_| |_|\__, |  \_____|\___|_| |_| \n" + 
+    "                           __/ |                     \n" + 
+    "                          |___/                      \n"))
 
 def init_config(config):
     """
@@ -13,7 +25,7 @@ def init_config(config):
         config.write(configfile)
 
 
-def read_config_ini(input_file_name:str, profile:str):
+def read_config_ini(input_file_name:str):
     """
     Reads a configuration initialize.
     
@@ -106,7 +118,7 @@ def main(args):
         manual_config()
 
     else: 
-        config = read_config_ini(args.input_config_file, args.profile)
+        config = read_config_ini(args.input_config_file)
 
         # print config options for confirmation
         print('{:=<50}'.format("PROFILE"))
@@ -126,6 +138,7 @@ def main(args):
             exit()
 
 
+print_title()
 
 if __name__ == '__main__':
     # parse command line arguments
@@ -157,3 +170,21 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     main(args)
+
+else:
+    # assume called as automated script
+    config = read_config_ini('config.ini')
+    
+    print('\n{:=<50}'.format('AVAILABLE PROFILES'))
+
+    sections = config.sections()
+    for i in range(len(sections)): 
+        width = 49
+        print('{index}{:.>{width}}'.format(sections[i], index=i, width=width))
+
+    print('{:=<50}'.format(''))
+
+    profile = int(input())
+
+    write_config_header(config, profile, 'include/config.h')
+
