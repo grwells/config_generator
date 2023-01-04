@@ -2,9 +2,9 @@
  * Project Configuration Header
  *     generated from config.ini using config_generator.py
  */
-#define SSID "lgdatanet"
-#define PSSWD "lgd4t4n3t!"
-#define MQTT_BROKER_ADDR "192.168.50.10"
+#define SSID "some_network"
+#define PSSWD "password"
+#define MQTT_BROKER_ADDR "some.ip.address.here"
 #define MQTT_PORT 1883
 #define DEBUG 1
 #define WIFI_TIMEOUT 10000
