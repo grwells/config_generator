@@ -186,5 +186,5 @@ else:
 
     profile = int(input())
 
-    write_config_header(config, sections[profile], 'include/config.h')
+    write_config_header(config, sections[profile], 'include/config.hpp')
 
